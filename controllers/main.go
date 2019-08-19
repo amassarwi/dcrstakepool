@@ -502,7 +502,7 @@ func (controller *MainController) isAdmin(c web.C, r *http.Request) (bool, error
 	}
 
 	uidstr := strconv.Itoa(int(session.Values["UserId"].(int64)))
-
+	fmt.Println(remoteIP)
 	if !stringSliceContains(controller.adminIPs, remoteIP) {
 		return false, fmt.Errorf("%s request from %s "+
 			"userid %s failed AdminIPs check", r.URL, remoteIP, uidstr)
@@ -1601,7 +1601,7 @@ func (controller *MainController) LoginPost(c web.C, r *http.Request) (string, i
 	}
 
 	log.Infof("Login POST from %v, email %v", remoteIP, user.Email)
-
+	log.Info(user.EmailVerified)
 	if user.EmailVerified == 0 {
 		session.AddFlash("You must validate your email address", "loginError")
 		return controller.Login(c, r)

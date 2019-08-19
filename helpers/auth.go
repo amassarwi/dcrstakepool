@@ -170,7 +170,6 @@ func Login(dbMap *gorp.DbMap, email string, password string) (*models.User, erro
 	if err != nil {
 		return nil, err
 	}
-
 	err = bcrypt.CompareHashAndPassword(user.Password, []byte(password))
 	if err != nil {
 		return nil, err

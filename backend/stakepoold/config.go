@@ -305,6 +305,7 @@ func loadConfig() (*config, []string, error) {
 		os.Exit(0)
 	}
 
+	fmt.Println(preCfg.HomeDir)
 	// Update the home directory for stakepoold if specified. Since the
 	// home directory is updated, other variables need to be updated to
 	// reflect the new changes.
@@ -439,6 +440,7 @@ func loadConfig() (*config, []string, error) {
 		return nil, nil, err
 	}
 
+	fmt.Println(numNets)
 	if cfg.DBHost == "" {
 		str := "%s: dbhost is not set in config"
 		err := fmt.Errorf(str, funcName)
